@@ -10,8 +10,10 @@ Key Features:
 - Autosaves settings automatically on game exit
 
 # Installation
-1. Copy `addons/nishimaaku.settingsmanager` to your Godot project or install it from the Asset Library,
-2. Enable the plugin in your Project Settings > Plugins
+1. Copy `addons/seimaaku.settingsmanager` to your Godot project or install it from the Asset Library,
+2. Before enabling the plugin, go to your Project Settings > Plugins, find this plugin, and click on the pencil icon next to it to open the plugin configuration window,
+3. Find the "Language:" section, change it from GDScript to C# and build the project,
+4. Now enable the plugin and you should be good to go.
 
 # Basic Usage
 ```csharp
@@ -19,17 +21,25 @@ Key Features:
 float volume = (float)SettingsManager.Instance.GetSetting("ExampleSettings.master_volume", 0.5f);
 string graphicsQuality = (string)SettingsManager.Instance.GetSetting("ExampleSettings.graphics", "medium");
 bool someSetting = (bool)SettingsManager.Instance.GetSetting("ExampleSettings.someboolean", false);
+// Arguments: string path, object Default = null
+// If the setting isn't found, it returns the fallback value. In this case, it's the second argument (if provided)
 
 // Setting values
 await SettingsManager.Instance.SetSetting("ExampleSettings.master_volume", 0.8f);
 await SettingsManager.Instance.SetSetting("ExampleSettings.graphics", "ultra");
 await SettingsManager.Instance.SetSetting("ExampleSettings.someboolean", true);
+// Arguments: string path, object value
 
-// Creating new categories (better extend the DefaultSettings dictionary in SettingsManager.cs for best experience)
+// Creating new categories (It is recommended to extend the DefaultSettings dictionary in SettingsManager.cs 
+// to define default values for new settings. This ensures that all settings have a fallback value
+// DefaultSettings["GameProgress.level"] = 1;
+// DefaultSettings["GameProgress.score"] = 0;
+// DefaultSettings["GameProgress.achievements.first_win"] = false;
+// )
 // This will automatically create the "GameProgress" category if it doesn't exist
-await Settings.Instance.SetSetting("GameProgress.level", 5);
-await Settings.Instance.SetSetting("GameProgress.score", 10000);
-await Settings.Instance.SetSetting("GameProgress.achievements.first_win", true);
+await SettingsManager.Instance.SetSetting("GameProgress.level", 5);
+await SettingsManager.Instance.SetSetting("GameProgress.score", 10000);
+await SettingsManager.Instance.SetSetting("GameProgress.achievements.first_win", true);
 ```
 
 # Example
@@ -57,7 +67,7 @@ public partial class GameManager : Node
         );
     }
     
-    public async void SaveUserPreferences(float musicVol, float sfxVol)
+    public async void SaveAudioSettings(float musicVol, float sfxVol)
     {
         await SettingsManager.Instance.SetSetting("Audio.music_volume", musicVol);
         await SettingsManager.Instance.SetSetting("Audio.sfx_volume", sfxVol);

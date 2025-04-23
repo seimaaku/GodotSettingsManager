@@ -7,7 +7,7 @@ public partial class SMPlugin : EditorPlugin
 {
 	public override void _EnterTree()
 	{
-		AddAutoloadSingleton("SettingsManager", "res://addons/nishimaaku.settingsmanager/SettingsManager.cs");
+		AddAutoloadSingleton("SettingsManager", "res://addons/seimaaku.settingsmanager/SettingsManager.cs");
 	}
 
 	public override void _ExitTree()

@@ -50,7 +50,7 @@ namespace Core {
 				var current = CurrentSettings;
 				for (int i = 0; i < keys.Length - 1; i++) {
 					if (!current.TryGetValue(keys[i], out var next) || next is not Dictionary<string, object> nextDict) {
-						nextDict = new Dictionary<string, object>();
+						nextDict = [];
 						current[keys[i]] = nextDict;
 					}
 					current = nextDict;
