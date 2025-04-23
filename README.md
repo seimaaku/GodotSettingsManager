@@ -10,10 +10,13 @@ Key Features:
 - Autosaves settings automatically on game exit
 
 # Installation
+### This plugin requires a .NET/Mono version of Godot to work. Make sure you have it installed before proceeding.
 1. Copy `addons/seimaaku.settingsmanager` to your Godot project or install it from the Asset Library,
-2. Before enabling the plugin, go to your Project Settings > Plugins, find this plugin, and click on the pencil icon next to it to open the plugin configuration window,
-3. Find the "Language:" section, change it from GDScript to C# and build the project,
-4. Now enable the plugin and you should be good to go.
+2. Before enabling the plugin, go to your Project Settings > Plugins,
+3. Find "Settings Manager" by "Sei Maaku" and click on the pencil icon next to it to open the plugin configuration window,
+4. Find the "Language:" section, change it from GDScript to C# and click on "Update",
+5. Build the project using Alt+B or by clicking the hammer icon on top right corner,
+6. Now enable the plugin and you should be good to go.
 
 # Basic Usage
 ```csharp
